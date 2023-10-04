@@ -1,12 +1,15 @@
 #include "other/ArrayGame.hh"
 #include "sort/Sorting.hh"
+#include "list/List.hh"
 
 void GameEntryTest();
 void testInsertSort();
+void testSinglyLinkedList();
 extern template void sorting::insertSort(char (&arr)[5]);
-
+extern template class list::SinglyLinkedListNode<int>;
+extern template class list::SinglyLinkedList<int>;
 int main(){
-	testInsertSort();
+	testSinglyLinkedList();
 	return 0;
 }
 
@@ -35,4 +38,17 @@ void testInsertSort(){
 		std::cout<<c<<", ";
 	}
 	std::cout<<std::endl;
+}
+
+void testSinglyLinkedList(){
+	list::SinglyLinkedList<int> list;
+	std::cout<<"before add: "<<list.toString()<<std::endl;
+	list.addFirst(new int(1));
+	list.addLast(new int(10));
+	list.addFirst(new int(-10));
+	list.addLast(new int(20));
+	std::cout<<"after add: "<<list.toString()<<std::endl;
+	int* ret = list.removeFirst();
+	std::cout<<"after removefirst: "<<list.toString()<<std::endl;
+	delete ret;
 }
