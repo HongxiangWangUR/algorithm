@@ -3,8 +3,10 @@
 #include <sstream>
 namespace list{
 	template<typename T> class SinglyLinkedList;
+	template<typename T> class CircularlyLinkedList;
 	template<typename T> class SinglyLinkedListNode{
 		friend class SinglyLinkedList<T>;
+		friend class CircularlyLinkedList<T>;
 		public:
 			SinglyLinkedListNode(T*,SinglyLinkedListNode*);
 			T* getElement();
@@ -32,5 +34,23 @@ namespace list{
 			T* removeFirst();
 			~SinglyLinkedList();
 			std::string toString();
+	};
+
+	template<typename T> class CircularlyLinkedList{
+		public:
+			CircularlyLinkedList():_size(0),tail(nullptr){};
+			int size();
+			bool isEmpty();
+			T* first();
+			T* last();
+			void rotate();
+			void addFirst(T*);
+			void addLast(T*);
+			T* removeFirst();
+			std::string toString();
+			~CircularlyLinkedList();
+		private:
+			int _size;
+			SinglyLinkedListNode<T>* tail;
 	};
 }
