@@ -6,13 +6,15 @@ void GameEntryTest();
 void testInsertSort();
 void testSinglyLinkedList();
 void testCircularLinkedList();
+void testDoublyLinkedList();
 extern template void sorting::insertSort(char (&arr)[5]);
 extern template class list::SinglyLinkedListNode<int>;
 extern template class list::SinglyLinkedList<int>;
 extern template class list::CircularlyLinkedList<int>;
+extern template class list::DoublyLinkedList<int>;
 
 int main(){
-	testCircularLinkedList();
+	testDoublyLinkedList();
 	return 0;
 }
 
@@ -67,4 +69,19 @@ void testCircularLinkedList(){
 	int* ret=list.removeFirst();
 	std::cout<<"after remove first"<<list.toString()<<std::endl;
 	delete ret;
+}
+
+void testDoublyLinkedList(){
+	list::DoublyLinkedList<int> list;
+	std::cout<<"before operating: "<<list.toString()<<std::endl;
+	list.addFirst(new int(10));
+	list.addLast(new int(20));
+	list.addFirst(new int(5));
+	list.addLast(new int(30));
+	std::cout<<"after operating: "<<list.toString()<<std::endl;
+	int* first = list.removeFirst();
+	int* last = list.removeLast();
+	std::cout<<"after remove: "<<list.toString()<<std::endl;
+	delete first;
+	delete last;
 }

@@ -198,10 +198,98 @@ template<typename T> list::CircularlyLinkedList<T>::~CircularlyLinkedList(){
 		delete temp;
 	}
 }
+
+/**
+ * definition of doubly linked list Node
+ **/
+
+template<typename T> T* list::DoublyLinkedList<T>::Node::getElement(){
+	return this->element;
+}
+
+template<typename T> void list::DoublyLinkedList<T>::Node::setElement(T* e){
+	this->element = e;
+}
+
+template<typename T> typename list::DoublyLinkedList<T>::Node* list::DoublyLinkedList<T>::Node::getPrev(){
+	return this->prev;
+}
+
+template<typename T> void list::DoublyLinkedList<T>::Node::setPrev(Node* prev){
+	this->prev = prev;
+}
+
+template<typename T> typename list::DoublyLinkedList<T>::Node* list::DoublyLinkedList<T>::Node::getNext(){
+	return this->next;
+}
+
+template<typename T> void list::DoublyLinkedList<T>::Node::setNext(Node* next){
+	this->next = next;
+}
+
+template<typename T> std::string list::DoublyLinkedList<T>::Node::toString(){
+	std::stringstream stream;
+	stream<<*(this->element);
+	return stream.str();
+}
+
+template<typename T> list::DoublyLinkedList<T>::Node::~Node(){
+	this->prev = nullptr;
+	this->next = nullptr;
+	delete this->element;
+}
+
+/**
+ * definition of doubly linked list
+ **/
+
+template<typename T> void list::DoublyLinkedList<T>::addBetween(T* element,Node* prev,Node* next){
+	Node* node = new Node(element,prev,next);
+	prev->setNext(node);
+	next->setPrev(node);
+	this->_size++;
+}
+
+template<typename T> T* list::DoublyLinkedList<T>::remove(Node* node){
+	Node* prev = node->getPrev();
+	Node* next = node->getNext();
+	prev->setNext(next);
+	next->setPrev(prev);
+	T* ret = node->getElement();
+	node->setElement(nullptr);
+	delete node;
+	this->_size--;
+	return ret;
+}
+
+template<typename T> std::string list::DoublyLinkedList<T>::toString(){
+	std::stringstream stream;
+	stream<<"[head<=>";
+	Node* cursor = this->head->getNext();
+	while(cursor != tail){
+		stream<<*(cursor->getElement())<<"<=>";
+		cursor=cursor->getNext();
+	}
+	stream<<"tail]";
+	return stream.str();
+}
+
+template<typename T> list::DoublyLinkedList<T>::~DoublyLinkedList(){
+	Node* cursor=head;
+	while(cursor!=tail){
+		Node* temp=cursor->getNext();
+		delete cursor;
+		cursor = temp;
+	}
+	head=nullptr;
+	delete tail;
+	tail = nullptr;
+}
 /**
  * template initialization declared here
  **/
 template class list::SinglyLinkedListNode<int>;
 template class list::SinglyLinkedList<int>;
 template class list::CircularlyLinkedList<int>;
+template class list::DoublyLinkedList<int>;
 
