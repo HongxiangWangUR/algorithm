@@ -1,7 +1,7 @@
-#include "other/ArrayGame.hh"
-#include "sort/Sorting.hh"
-#include "list/List.hh"
-#include "recurse/recurse.hh"
+#include "ArrayGame.hh"
+#include "Sorting.hh"
+#include "List.hh"
+#include "recurse.hh"
 
 void GameEntryTest();
 void testInsertSort();
