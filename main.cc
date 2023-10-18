@@ -11,6 +11,10 @@ void testDoublyLinkedList();
 void testFactorial();
 void testDrawRuler();
 void binarySearchTest();
+void testLinerSum();
+void testReverseArray();
+void testPower();
+void testMorePower();
 extern template void sorting::insertSort(char (&arr)[5]);
 extern template class list::SinglyLinkedListNode<int>;
 extern template class list::SinglyLinkedList<int>;
@@ -18,7 +22,7 @@ extern template class list::CircularlyLinkedList<int>;
 extern template class list::DoublyLinkedList<int>;
 
 int main(){
-	binarySearchTest();
+	testMorePower();
 	return 0;
 }
 
@@ -107,4 +111,30 @@ void binarySearchTest(){
 	}else{
 		std::cout<<"can't find target"<<std::endl;
 	}
+}
+
+void testLinerSum(){
+	int data[10]={1,2,3,4,5,6,7,8,9,10};
+	int result = recurse::linearSum(data,10);
+	std::cout<<"the result is: "<<result<<std::endl;
+}
+
+void testReverseArray(){
+	int data[10]={1,2,3,4,5,6,7,8,9,10};
+	recurse::reverseArray(data,0,9);
+	std::cout<<"after reverse:";
+	for(auto &e:data){
+		std::cout<<e<<" ";
+	}
+	std::cout<<std::endl;
+}
+
+void testPower(){
+	int x=4,n=3;
+	std::cout<<"4^3="<<recurse::power(x,n)<<std::endl;
+}
+
+void testMorePower(){
+	int x=4,n=3;
+	std::cout<<"morepower(4^3)="<<recurse::morePower(x,n)<<std::endl;
 }

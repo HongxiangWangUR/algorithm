@@ -55,4 +55,39 @@ namespace recurse{
 			return binarySearch(pt,target,mid+1,end);
 		}
 	}
+
+	int linearSum(int* pt,int n){
+		if(n==0){
+			return 0;
+		}
+		return pt[n-1]+linearSum(pt,n-1);
+	}
+
+	void reverseArray(int* pt,int low,int high){
+		if(low<high){
+			int temp = pt[low];
+			pt[low]=pt[high];
+			pt[high]=temp;
+			reverseArray(pt,low+1,high-1);
+		}
+	}
+
+	int power(int x,int n){
+		if(n==0){
+			return 1;
+		}
+		return x * power(x,n-1);
+	}
+
+	int morePower(int x,int n){
+		if(n==0){
+			return 1;
+		}
+		int temp = morePower(x,n/2);
+		int result = temp*temp;
+		if(n%2==1){
+			result*=x;
+		}
+		return result;
+	}
 }
