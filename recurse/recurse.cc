@@ -90,4 +90,49 @@ namespace recurse{
 		}
 		return result;
 	}
+
+	int binarySum(int* pt,int low,int high){
+		if(low>high){
+			return 0;
+		}
+		if(low == high){
+			return pt[low];
+		}
+		int mid = low+(high-low)/2;
+		return binarySum(pt,low,mid)+binarySum(pt,mid+1,high);
+	}
+
+	bool unique3(int* pt,int low,int high){
+		if(low>=high){
+			return true;
+		}else if(!unique3(pt,low+1,high)){
+			return false;
+		}else if(!unique3(pt,low,high-1)){
+			return false;
+		}else{
+			return pt[low]!=pt[high];
+		}
+	}
+
+	int fibonacciBad(int n){
+		if(n<=1)
+			return 1;
+		return fibonacciBad(n-2)+fibonacciBad(n-1);
+	}
+
+	int* fibonacciGood(int n){
+		if(n<=1){
+			int* ret = new int[2];
+			ret[0]=n;
+			ret[1]=0;
+			return ret;
+		}else{
+			int* temp=fibonacciGood(n-1);
+			int* ret = new int[2];
+			ret[0]=temp[0]+temp[1];
+			ret[1]=temp[0];
+			delete [] temp;
+			return ret;
+		}
+	}
 }

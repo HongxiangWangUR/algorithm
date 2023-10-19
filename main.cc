@@ -15,6 +15,13 @@ void testLinerSum();
 void testReverseArray();
 void testPower();
 void testMorePower();
+void testBinarySum();
+void testBinarySum();
+void testUnique3();
+void testFibonacciBad();
+void testFibonacciGood();
+void testBinarySearchIterative();
+void testReverseIterative();
 extern template void sorting::insertSort(char (&arr)[5]);
 extern template class list::SinglyLinkedListNode<int>;
 extern template class list::SinglyLinkedList<int>;
@@ -22,7 +29,7 @@ extern template class list::CircularlyLinkedList<int>;
 extern template class list::DoublyLinkedList<int>;
 
 int main(){
-	testMorePower();
+	testReverseIterative();
 	return 0;
 }
 
@@ -137,4 +144,43 @@ void testPower(){
 void testMorePower(){
 	int x=4,n=3;
 	std::cout<<"morepower(4^3)="<<recurse::morePower(x,n)<<std::endl;
+}
+
+void testBinarySum(){
+	int data[]={1,2,3,4,5,6,7,8,9,10};
+	int result = recurse::binarySum(data,0,9);
+	std::cout<<"the result of binary sum is: "<<result<<std::endl;
+}
+
+void testUnique3(){
+	int data[]={1,2,3,4,5,6,7,8,9,10};
+	bool result = recurse::unique3(data,0,9);
+	std::cout<<"test result of unique3: "<<result<<std::endl;
+}
+
+void testFibonacciBad(){
+	int result = recurse::fibonacciBad(10);
+	std::cout<<"the result of fibonacciBad(): "<<result<<std::endl;
+}
+
+void testFibonacciGood(){
+	int* ret=recurse::fibonacciGood(10);
+	std::cout<<"result of fibonacciGood(): "<<ret[0]<<std::endl;
+	delete [] ret;
+}
+
+void testBinarySearchIterative(){
+	int data[10]={1,2,3,4,5,6,7,8,9,10};
+	bool result = recurse::binarySearchIterative(data,6);
+	std::cout<<"result of binarySearchIterative() is: "<<result<<std::endl;
+}
+
+void testReverseIterative(){
+	int data[10]={1,2,3,4,5,6,7,8,9,10};
+	recurse::reverseIterative(data);
+	std::cout<<"after reverse:";
+	for(auto &e:data){
+		std::cout<<e<<" ";
+	}
+	std::cout<<std::endl;
 }
