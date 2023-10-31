@@ -2,6 +2,7 @@
 #include "Sorting.hh"
 #include "List.hh"
 #include "recurse.hh"
+#include "Stack.h"
 
 void GameEntryTest();
 void testInsertSort();
@@ -22,14 +23,16 @@ void testFibonacciBad();
 void testFibonacciGood();
 void testBinarySearchIterative();
 void testReverseIterative();
+void testArrayStack();
 extern template void sorting::insertSort(char (&arr)[5]);
 extern template class list::SinglyLinkedListNode<int>;
 extern template class list::SinglyLinkedList<int>;
 extern template class list::CircularlyLinkedList<int>;
 extern template class list::DoublyLinkedList<int>;
+extern template class stack::ArrayStack<int>;
 
 int main(){
-	testReverseIterative();
+	testArrayStack();
 	return 0;
 }
 
@@ -183,4 +186,15 @@ void testReverseIterative(){
 		std::cout<<e<<" ";
 	}
 	std::cout<<std::endl;
+}
+
+void testArrayStack(){
+	stack::ArrayStack<int> stk;
+	stk.push(new int(1));
+	stk.push(new int(2));
+	stk.push(new int(3));
+	std::cout<<stk.toString()<<std::endl;
+	std::cout<<"the top value is: "<<*(stk.top())<<std::endl;
+	std::cout<<"the poped value is: "<<*(stk.pop())<<std::endl;
+	std::cout<<"after pop: "<<stk.toString()<<std::endl;
 }
