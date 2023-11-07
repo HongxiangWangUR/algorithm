@@ -1,5 +1,6 @@
 #include <iostream>
 #include <sstream>
+#include "List.hh"
 namespace stack{
 	template <typename T> class ArrayStack{
 		public:
@@ -26,5 +27,32 @@ namespace stack{
 			T** data;
 			int capacity;
 			int top_index = -1;
+	};
+
+	template<typename T> class LinkedStack{
+		public:
+			LinkedStack(){};
+			int size(){
+				return list.size();
+			}
+			bool isEmpty(){
+				return list.isEmpty();
+			}
+			void push(T* e){
+				list.addLast(e);
+			}
+			T* top(){
+				return list.first();
+			}
+			T* pop(){
+				return list.removeFirst();
+			}
+			std::string toString(){
+				std::stringstream stream;
+				stream<<"["<<list.toString();
+				return stream.str();
+			}
+		private:
+			list::SinglyLinkedList<T> list;
 	};
 }

@@ -24,6 +24,7 @@ void testFibonacciGood();
 void testBinarySearchIterative();
 void testReverseIterative();
 void testArrayStack();
+void testLinkedStack();
 extern template void sorting::insertSort(char (&arr)[5]);
 extern template class list::SinglyLinkedListNode<int>;
 extern template class list::SinglyLinkedList<int>;
@@ -32,7 +33,7 @@ extern template class list::DoublyLinkedList<int>;
 extern template class stack::ArrayStack<int>;
 
 int main(){
-	testArrayStack();
+	testLinkedStack();
 	return 0;
 }
 
@@ -195,6 +196,21 @@ void testArrayStack(){
 	stk.push(new int(3));
 	std::cout<<stk.toString()<<std::endl;
 	std::cout<<"the top value is: "<<*(stk.top())<<std::endl;
-	std::cout<<"the poped value is: "<<*(stk.pop())<<std::endl;
+	int *e=stk.pop();
+	std::cout<<"the poped value is: "<<*(e)<<std::endl;
 	std::cout<<"after pop: "<<stk.toString()<<std::endl;
+	delete e;
+}
+
+void testLinkedStack(){
+	stack::LinkedStack<int> stack;
+	stack.push(new int(1));
+	stack.push(new int(2));
+	stack.push(new int(3));
+	std::cout<<stack.toString()<<std::endl;
+	std::cout<<"the top value is: "<<*(stack.top())<<std::endl;
+	int *e=stack.pop();
+	std::cout<<"the poped value is: "<<*(e)<<std::endl;
+	std::cout<<"after pop: "<<stack.toString()<<std::endl;
+	delete e;
 }

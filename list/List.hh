@@ -1,6 +1,8 @@
 #include <iostream>
 #include <string>
 #include <sstream>
+#ifndef LIST
+#define LIST
 namespace list{
 	template<typename T> class SinglyLinkedList;
 	template<typename T> class CircularlyLinkedList;
@@ -122,3 +124,4 @@ namespace list{
 			T* remove(Node* node);
 	};
 }
+#endif
