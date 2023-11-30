@@ -4,7 +4,7 @@ maininclude = -Ilist -Iother -Irecurse -Isort -Istack
 CXX = g++
 CXXFLAGS = $(maininclude) -std=c++11 -stdlib=libc++
 All: algo
-algo: $(objects)
+algo: $(objects) Queue.h
 	g++ $(objects) -o algo
 ArrayGame.o: ArrayGame.hh
 Sorting.o: Sorting.hh

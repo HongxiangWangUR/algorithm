@@ -1,6 +1,8 @@
 #include <iostream>
 #include <sstream>
 #include "List.hh"
+#ifndef STACK
+#define STACK
 namespace stack{
 	template <typename T> class ArrayStack{
 		public:
@@ -56,3 +58,4 @@ namespace stack{
 			list::SinglyLinkedList<T> list;
 	};
 }
+#endif

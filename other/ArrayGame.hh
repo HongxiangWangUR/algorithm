@@ -2,7 +2,7 @@
 #include <sstream>
 #include <iostream>
 #include <cstddef>
-
+#include "Stack.h"
 namespace other{
 	class GameEntry{
 		private:
@@ -28,4 +28,14 @@ namespace other{
 		void add(GameEntry*);
 		GameEntry* remove(int);
 	};
+
+	template<typename  T,unsigned N> void reverse(T *(&a)[N]){
+		stack::ArrayStack<T> stack;
+		for(auto i=0;i<N;i++){
+			stack.push(a[i]);
+		}
+		for(auto i=0;i<N;i++){
+			a[i]=stack.pop();
+		}
+	}
 }

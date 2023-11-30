@@ -3,6 +3,7 @@
 #include "List.hh"
 #include "recurse.hh"
 #include "Stack.h"
+#include "Queue.h"
 
 void GameEntryTest();
 void testInsertSort();
@@ -25,6 +26,8 @@ void testBinarySearchIterative();
 void testReverseIterative();
 void testArrayStack();
 void testLinkedStack();
+void testOtherReverse();
+void testArrayQueue();
 extern template void sorting::insertSort(char (&arr)[5]);
 extern template class list::SinglyLinkedListNode<int>;
 extern template class list::SinglyLinkedList<int>;
@@ -33,7 +36,7 @@ extern template class list::DoublyLinkedList<int>;
 extern template class stack::ArrayStack<int>;
 
 int main(){
-	testLinkedStack();
+	testArrayQueue();
 	return 0;
 }
 
@@ -213,4 +216,26 @@ void testLinkedStack(){
 	std::cout<<"the poped value is: "<<*(e)<<std::endl;
 	std::cout<<"after pop: "<<stack.toString()<<std::endl;
 	delete e;
+}
+
+void testOtherReverse(){
+	int *a[3]={new int(1),new int(2), new int(3)};
+	std::cout<<"before reverse: "<<*(a[0])<<","<<*(a[1])<<","<<*(a[2])<<std::endl;
+	other::reverse(a);
+	std::cout<<"after reverse: "<<*(a[0])<<","<<*(a[1])<<","<<*(a[2])<<std::endl;
+	for(auto i=0;i<std::end(a)-std::begin(a);i++){
+		delete a[i];
+	}
+}
+
+void testArrayQueue(){
+	queue::ArrayQueue<int> queue;
+	std::cout<<queue.toString()<<std::endl;
+	queue.enqueue(new int(1));
+	queue.enqueue(new int(2));
+	queue.enqueue(new int(3));
+	std::cout<<queue.toString()<<std::endl;
+	int* value = queue.dequeue();
+	delete value;
+	std::cout<<queue.toString()<<std::endl;
 }
